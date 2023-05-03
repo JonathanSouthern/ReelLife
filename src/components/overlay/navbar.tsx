@@ -16,7 +16,7 @@ import {
   DrawerBody,
 } from "@chakra-ui/react";
 import { TfiMenu } from "react-icons/tfi";
-import Searchbar from "../elements/searchbar";
+import Searchbar from "@/components/modules/searchbar";
 import Image from "next/image";
 import Link from "next/link";
 

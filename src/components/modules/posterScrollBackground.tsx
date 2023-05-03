@@ -19,7 +19,6 @@ export default function PosterBackground() {
   const imageMargin = 10;
   const imageWidth = 300;
   const totalWidthOfImage = imageMargin * 2 + imageWidth;
-  //${images.length * totalWidthOfImage}
 
   const slide = keyframes`
       0% {

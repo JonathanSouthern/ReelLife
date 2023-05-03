@@ -1,7 +1,7 @@
 import { Card, CardBody, CardFooter, Heading, Stack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import BookmarkButtons from "@/components/elements/bookmarkButtons";
-import Image from "@/components/elements/chakraNextImage";
+import BookmarkButtons from "@/components/modules/bookmarkButtons";
+import Image from "next/image";
 import { BookmarkedMovies, Movie } from "@/types/movie";
 
 type MovieCardProps = {
@@ -21,14 +21,12 @@ const MovieCard = ({ movie, onChange }: MovieCardProps) => {
       direction="row"
       overflow="hidden"
       variant="outline"
-      bgColor={"primary.50"}
+      bgColor={"gray.100"}
       onClick={goToMovie}
       _hover={{ cursor: "pointer" }}
       size="sm"
     >
       <Image
-        objectFit="cover"
-        maxW={{ base: "100%", sm: "200px" }}
         width={100}
         height={140}
         src={movie.posterUrl}

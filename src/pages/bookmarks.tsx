@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { groupBy } from "lodash";
-import MovieCard from "@/components/elements/movieCard";
+import MovieCard from "@/components/modules/movieCard";
 
 type WatchedFilers = "all" | "watched" | "unwatched";
 

@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 import { MovieDetailsReturnType, RatingsEntity } from "../api/movie/[id]";
 import { useToast } from "@chakra-ui/react";
 import axios, { isAxiosError } from "axios";
-import BookmarkButtons from "@/components/elements/bookmarkButtons";
+import BookmarkButtons from "@/components/modules/bookmarkButtons";
 import { BookmarkedMovie } from "@/types/movie";
 import NextImage from "next/image";
 

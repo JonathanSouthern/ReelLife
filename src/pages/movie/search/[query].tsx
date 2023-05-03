@@ -1,4 +1,4 @@
-import MovieCard from "@/components/elements/movieCard";
+import MovieCard from "@/components/modules/movieCard";
 import { MoviesListReturnType } from "@/pages/api/movie/search/[query]";
 import {
   Button,
