@@ -41,6 +41,7 @@ export default function PosterBackground() {
       bgColor={"black"}
       paddingY="100%"
     >
+      {!images.length && <Box minWidth={"100vw"} />}
       {/* Repeat images so we have seamless transisition */}
       {[...images, ...images].map((el: string, index) => (
         <Box
