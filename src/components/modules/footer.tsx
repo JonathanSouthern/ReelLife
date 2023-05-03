@@ -1,4 +1,4 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, Link, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -10,7 +10,18 @@ const Footer = () => {
       bgColor={"blackAlpha.900"}
       color="white"
     >
-      <Center> Built by Jonathan Southern. </Center>
+      <Center>
+        <Text>
+          Built by{" "}
+          <Link
+            href="https://www.jonathan-southern.com/"
+            isExternal
+            color={"yellow.400"}
+          >
+            Jonathan Southern
+          </Link>
+        </Text>
+      </Center>
     </Box>
   );
 };
