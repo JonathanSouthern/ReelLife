@@ -10,7 +10,7 @@ const Layout = ({ children }: PropsWithChildren) => {
       <Box
         display="flex"
         flexGrow={1}
-        bgColor={"blackAlpha.300"}
+        bgColor={"gray.200"}
         boxShadow="inner"
         zIndex={-2}
       >

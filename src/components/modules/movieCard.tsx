@@ -21,10 +21,14 @@ const MovieCard = ({ movie, onChange }: MovieCardProps) => {
       direction="row"
       overflow="hidden"
       variant="outline"
-      bgColor={"gray.100"}
+      bgColor={"whiteAlpha.900"}
       onClick={goToMovie}
-      _hover={{ cursor: "pointer" }}
+      _hover={{
+        cursor: "pointer",
+        bgColor: "whiteAlpha.600",
+      }}
       size="sm"
+      boxShadow={"lg"}
     >
       <Image
         width={100}

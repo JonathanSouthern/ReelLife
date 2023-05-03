@@ -24,7 +24,7 @@ import { BookmarkedMovie } from "@/types/movie";
 import NextImage from "next/image";
 
 const SectionStyling = {
-  bgColor: "primary.50",
+  bgColor: "whiteAlpha.900",
   borderRadius: "md",
   boxShadow: "base",
   padding: 4,
