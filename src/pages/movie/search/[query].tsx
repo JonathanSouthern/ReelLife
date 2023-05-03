@@ -25,9 +25,7 @@ const MovieSearchPage = () => {
 
   const retrieveMovies = async (page: number = 1) => {
     setIsLoading(true);
-    const response = await fetch(
-      `http://localhost:3000/api/movie/search/${query}?page=${page}`
-    );
+    const response = await fetch(`/api/movie/search/${query}?page=${page}`);
     const data = await response.json();
     //Max results sent from a page is 10.
     if (data.length < 10) {

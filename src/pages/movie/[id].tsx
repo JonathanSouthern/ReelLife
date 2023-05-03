@@ -105,7 +105,7 @@ const MoviePage = () => {
 
   const retrieveMovie = async () => {
     try {
-      const response = await axios(`http://localhost:3000/api/movie/${id}`);
+      const response = await axios(`/api/movie/${id}`);
       setMovie(response.data);
     } catch (err) {
       return toast({

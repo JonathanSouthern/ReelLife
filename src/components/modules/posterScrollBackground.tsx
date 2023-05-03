@@ -7,10 +7,7 @@ export default function PosterBackground() {
   const [images, setImages] = useState<string[]>([]);
 
   const getImages = async () => {
-    const response = await axios(
-      `http://localhost:3000/api/readAllPosterImages`
-    );
-    console.log(response);
+    const response = await axios(`api/readAllPosterImages`);
     setImages(response.data);
   };
 
