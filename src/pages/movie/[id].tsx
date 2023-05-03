@@ -23,6 +23,13 @@ import BookmarkButtons from "@/components/elements/bookmarkButtons";
 import { BookmarkedMovie } from "@/types/movie";
 import NextImage from "next/image";
 
+const SectionStyling = {
+  bgColor: "primary.50",
+  borderRadius: "md",
+  boxShadow: "base",
+  padding: 4,
+};
+
 const DetailSection = ({
   heading,
   details,
@@ -53,7 +60,6 @@ const ListSection = ({
         {heading}
       </Heading>
       <Wrap>
-        {" "}
         {list.map((badge) => (
           <WrapItem key={badge}>
             <Badge>{badge}</Badge>
@@ -137,112 +143,99 @@ const MoviePage = () => {
           {isLoaded ? (
             <Image
               src={movie?.Poster}
-              width={"500px"}
+              width={"400px"}
               alt="moviePoster"
               shadow="lg"
               borderRadius="md"
             />
           ) : (
-            <Skeleton width={350} height={500} />
+            <Skeleton width={400} height="100%" minHeight="500px" />
           )}
         </GridItem>
-        <GridItem rowStart={[3, "auto"]} colStart={1}>
-          <Stack
-            bgColor={"primary.50"}
-            borderRadius={"md"}
-            boxShadow={"base"}
-            paddingX={4}
-            pb={2}
-          >
-            <SkeletonText isLoaded={isLoaded} noOfLines={6} />
-            <DetailSection
-              heading="Age Rating"
-              details={<Text>{movie?.Rated}</Text>}
-            />
-            <DetailSection
-              heading="Run Time"
-              details={<Text>{movie?.Runtime}</Text>}
-            />
-            <DetailSection
-              heading="Genre"
-              details={
-                <Wrap justify="end" alignSelf="center">
-                  {movie?.Genre.map((genre) => (
-                    <WrapItem key={genre}>
-                      <Badge>{genre}</Badge>
-                    </WrapItem>
-                  ))}
-                </Wrap>
-              }
-            />
-          </Stack>
+        <GridItem rowStart={[3, "auto"]} colStart={1} {...SectionStyling}>
+          <SkeletonText isLoaded={isLoaded} noOfLines={6} my={2}>
+            <Stack>
+              <DetailSection
+                heading="Age Rating"
+                details={<Text>{movie?.Rated}</Text>}
+              />
+              <DetailSection
+                heading="Run Time"
+                details={<Text>{movie?.Runtime}</Text>}
+              />
+              <DetailSection
+                heading="Genre"
+                details={
+                  <Wrap justify="end" alignSelf="center">
+                    {movie?.Genre.map((genre) => (
+                      <WrapItem key={genre}>
+                        <Badge>{genre}</Badge>
+                      </WrapItem>
+                    ))}
+                  </Wrap>
+                }
+              />
+            </Stack>
+          </SkeletonText>
         </GridItem>
         <GridItem
           rowSpan={["auto", 2]}
           colSpan={["auto", 2]}
           rowStart={["auto", 1]}
           colStart={["auto", 2]}
+          display={"flex"}
+          {...SectionStyling}
         >
-          <Stack
-            bgColor={"primary.50"}
-            borderRadius={"md"}
-            boxShadow={"base"}
-            flexGrow={1}
+          <SkeletonText
+            isLoaded={isLoaded}
             spacing={3}
-            paddingX={4}
-            alignSelf="stretch"
-            pb={3}
+            noOfLines={35}
+            width="100%"
           >
-            <SkeletonText
-              isLoaded={isLoaded}
-              spacing={3}
-              noOfLines={30}
-              width="auto"
-              my={2}
-            />
-            <Stack
-              direction={["column", "row"]}
-              alignItems="start"
-              justifyContent="space-between"
-            >
-              <Heading>
-                {movie?.Title}
-                <Heading as="span" color="GrayText">
-                  {" "}
-                  ({movie?.Year})
+            <Stack flexGrow={1} spacing={3} flex={1}>
+              <Stack
+                direction={["column", "row"]}
+                alignItems="start"
+                justifyContent="space-between"
+              >
+                <Heading>
+                  {movie?.Title}{" "}
+                  <Heading as="span" color="GrayText">
+                    ({movie?.Year})
+                  </Heading>
                 </Heading>
-              </Heading>
-              {movie && (
-                <BookmarkButtons
-                  movie={convertDetailedMovie(movie)}
-                  buttonProps={{ size: "lg" }}
-                />
-              )}
+                {movie && (
+                  <BookmarkButtons
+                    movie={convertDetailedMovie(movie)}
+                    buttonProps={{ size: "lg" }}
+                  />
+                )}
+              </Stack>
+              <TextSection heading="Plot" body={movie?.Plot} />
+              <ListSection heading="Director" list={movie?.Director} />
+              <ListSection heading="Writers" list={movie?.Writer} />
+              <ListSection heading="Actors" list={movie?.Actors} />
+              <TextSection heading="Awards" body={movie?.Awards} />
+              <Stack>
+                <Heading as={"h5"} size="md">
+                  Ratings
+                </Heading>
+                {movie?.Ratings?.map((rating) => (
+                  <HStack key={rating.Source}>
+                    <Tooltip label={rating.Source}>
+                      <NextImage
+                        src={RatingLogo[rating.Source]}
+                        alt={rating.Source}
+                        height={40}
+                        width={40}
+                      />
+                    </Tooltip>
+                    <Text>{rating.Value}</Text>
+                  </HStack>
+                ))}
+              </Stack>
             </Stack>
-            <TextSection heading="Plot" body={movie?.Plot} />
-            <ListSection heading="Director" list={movie?.Director} />
-            <ListSection heading="Writers" list={movie?.Writer} />
-            <ListSection heading="Actors" list={movie?.Actors} />
-            <TextSection heading="Awards" body={movie?.Awards} />
-            <Stack>
-              <Heading as={"h5"} size="md">
-                Ratings
-              </Heading>
-              {movie?.Ratings?.map((rating) => (
-                <HStack key={rating.Source}>
-                  <Tooltip label={rating.Source}>
-                    <NextImage
-                      src={RatingLogo[rating.Source]}
-                      alt={rating.Source}
-                      height={40}
-                      width={40}
-                    />
-                  </Tooltip>
-                  <Text>{rating.Value}</Text>
-                </HStack>
-              ))}
-            </Stack>
-          </Stack>
+          </SkeletonText>
         </GridItem>
       </Grid>
     </Container>
