@@ -2,7 +2,7 @@
 
 This is a project built to simulate a movie tool with NextJS. With this, you should be able to look up your favorite movies, bookmark them, and mark as watched!
 
-You can see a deployed version of the app here:
+You can see a deployed version of the app here: https://reel-life.jonathan-southern.com/
 
 ## Running Locally
 
